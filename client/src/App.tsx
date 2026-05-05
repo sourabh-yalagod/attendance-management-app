@@ -1,11 +1,18 @@
-import { memo } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-const App = () => {
+export default function App() {
   return (
-    <div>
-      <h2>App</h2>
-    </div>
-  );
-};
+    <BrowserRouter>
+      <Routes>
+        <Route path="/register" element={<Register />} />
 
-export default memo(App);
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
