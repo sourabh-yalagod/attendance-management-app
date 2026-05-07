@@ -26,16 +26,14 @@ export default function Onboarding() {
 
   useEffect(() => {
     const currantRole = user?.unsafeMetadata?.role as Role | undefined;
+    if(!user){
+      navigate("/login");
+      return;
+    }
     if (!!currantRole) {
       navigate("/");
       return;
     }
-    console.log({ users: user });
-
-    // if(!user){
-    //   navigate("/login");
-    //   return;
-    // }
   }, [user]);
   const handleSaveRole = async () => {
     if (!user) return;
