@@ -8,7 +8,7 @@ const API = axios.create({
 // Attach Clerk token + role
 API.interceptors.request.use(async (config) => {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
-
+  
   if (user) {
     config.headers["x-user"] = JSON.stringify({
       id: user.id,
@@ -35,4 +35,13 @@ export default {
   // Summary
   batchSummary: (id: string) => API.get(`/batches/${id}/summary`),
   programmeSummary: () => API.get("/programme/summary"),
+  
+  // Institution
+  getInstitutionBatches: () => API.get("/programme/summary"),
+  getInstitutionTrainers: () => API.get("/programme/summary"),
+  
+  // Students
+  getMyAttendance: () => API.get("/programme/summary"),
+  getMyBatch: () => API.get("/programme/summary"),
+  getStudentSessions: () => API.get("/programme/summary"),
 };

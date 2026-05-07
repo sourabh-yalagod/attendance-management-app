@@ -1,9 +1,9 @@
-import { SignIn } from "@clerk/clerk-react";
+import { SignIn } from "@clerk/react";
 
 export default function Login() {
   return (
     <div className="flex justify-center items-center h-screen">
-      <SignIn />
+      <SignIn routing="path" path="/login" signUpUrl="/register" />
     </div>
   );
 }
